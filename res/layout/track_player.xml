@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/black"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="6.0dip"
+    android:paddingLeft="5.0dip"
+    android:paddingTop="5.0dip">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20.0dip"
+            android:background="@drawable/repeat_off_selector" />
+
+        <Button
+            android:id="@+id/shuffle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shuffle_off_selector" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/artwork_image"
+        android:layout_width="100.0dip"
+        android:layout_height="90.0dip"
+        android:layout_marginTop="5.0dip"
+        android:src="@drawable/music_artist_default" />
+
+    <TextView
+        android:id="@+id/track_title"
+        android:layout_width="256.0dip"
+        android:layout_height="24.0dip"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/track_artist"
+        android:layout_width="256.0dip"
+        android:layout_height="24.0dip"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60.0dip"
+        android:orientation="vertical">
+
+        <SeekBar
+            android:id="@+id/progress"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="8.0dip"
+            android:paddingRight="8.0dip"
+            android:progressDrawable="@drawable/seekbar_bg"
+            android:thumb="@drawable/seekbar_thumb" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/currenttime"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="left"
+                android:shadowColor="#ff000000"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="3.0"
+                android:singleLine="true"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textSize="@dimen/text_size_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/track_in_total"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:shadowColor="#ff000000"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="3.0"
+                android:singleLine="true"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textSize="@dimen/text_size_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/totaltime"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1.0"
+                android:gravity="right"
+                android:shadowColor="#ff000000"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="3.0"
+                android:singleLine="true"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textSize="@dimen/text_size_20"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60.0dip">
+
+        <com.wedesign.music.view.RepeatingImageButton
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30.0dip"
+            android:layout_toLeftOf="@+id/pause"
+            android:background="@drawable/play_control_pervious" />
+
+        <Button
+            android:id="@+id/pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/play_control_playing" />
+
+        <com.wedesign.music.view.RepeatingImageButton
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30.0dip"
+            android:layout_toRightOf="@+id/pause"
+            android:background="@drawable/play_control_next" />
+    </RelativeLayout>
+
+</LinearLayout>

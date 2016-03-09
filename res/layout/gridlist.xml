@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/grid_container"
+    android:layout_width="@dimen/list_normal_width"
+    android:layout_height="fill_parent"
+    android:background="@drawable/artists_list_area"
+    android:padding="5.0dip"
+    android:visibility="visible" >
+
+    <com.wedesign.music.view.CustomGridview
+        android:id="@+id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:horizontalSpacing="23dp"
+        android:numColumns="3"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"
+        android:scrollbars="none"
+        android:verticalSpacing="3dp" />
+
+</LinearLayout>

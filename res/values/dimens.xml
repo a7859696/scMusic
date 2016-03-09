@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="play_normal_width">275dp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="list_normal_width">409dp</dimen>
+    <dimen name="list_item_height">68dp</dimen>
+    <dimen name="grid_item_height">200dp</dimen>
+    <dimen name="artist_default_icon_width">104dp</dimen>
+    <dimen name="artist_default_icon_height">104dp</dimen>
+</resources>

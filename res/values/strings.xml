@@ -1,0 +1,31 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">音乐</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tab_library">音乐库</string>
+    <string name="tab_artist">艺术家</string>
+    <string name="tab_song">歌曲</string>
+    <string name="tab_album">专辑</string>
+    <string name="library_sd">SD</string>
+    <string name="library_usb">USB</string>
+    <string name="library_hdd">HDD</string>
+    <string name="title_activity_album_browser">AlbumBrowserActivity</string>
+    <string name="title_activity_artist_browser">ArtistBrowserActivity</string>
+    <string name="title_activity_artist">Artist</string>
+    <string name="title_activity_track_browser">TrackBrowserActivity</string>
+    <string name="title_activity_library_browser">LibraryBrowserActivity</string>
+    <!-- Do not translate. Duration format for duration < 1 hour -->
+    <string name="durationformatshort" translatable="false"><xliff:g id="format">%2$d:%5$02d</xliff:g></string>
+    <!-- Do not translate. Duration format for duration >= 1 hour -->
+    <string name="durationformatlong" translatable="false"><xliff:g id="format">%1$d:%3$02d:%5$02d</xliff:g></string>
+    <string name="notification_artist_album">"<xliff:g id="ALBUM">%2$s</xliff:g>"\n"<xliff:g id="ARTIST">%1$s</xliff:g>"</string>
+    <string name="unknown_artist_name">"未知艺术家"</string>
+    <string name="unknown_album_name">"未知专辑"</string>
+    <string name="playback_failed">"该播放器不支持这种音频文件类型。"</string>
+    <string name="albumsongseparator">\\n</string>
+    <string name="emptyplaylist">您选的播放列表是空的。</string>
+
+</resources>

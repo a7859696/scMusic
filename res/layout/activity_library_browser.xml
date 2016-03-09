@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <include layout="@layout/buttonbar" />
+
+    <LinearLayout
+              android:layout_width="0dp"
+            android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:background="@color/black"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <LinearLayout
+                                 android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="85.0dip"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/library_usb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/music_library_usb_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25.0dip"
+                android:text="@string/library_usb"
+                android:textColor="@color/white"
+                android:textSize="24.0dip" />
+        </LinearLayout>
+
+        <LinearLayout
+                     android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="47.0dip"
+            android:layout_marginTop="85.0dip"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/library_sd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/music_library_sd_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25.0dip"
+                android:text="@string/library_sd"
+                android:textColor="@color/white"
+                android:textSize="24.0dip" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="47.0dip"
+            android:layout_marginTop="85.0dip"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/library_disk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/music_library_disk_highlight_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25.0dip"
+                android:text="@string/library_hdd"
+                android:textColor="@color/white"
+                android:textSize="24.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

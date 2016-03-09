@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/line1"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="4.0dip"
+        android:paddingRight="11.0dip"
+        android:singleLine="true"
+        android:textColor="?android:textColorTertiary"
+        android:textSize="20.0sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/line1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_toLeftOf="@+id/duration"
+        android:duplicateParentState="true"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@drawable/title_selector"
+        android:textSize="@dimen/text_size_24" />
+
+    <TextView
+        android:id="@+id/line2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_below="@+id/line1"
+        android:duplicateParentState="true"
+        android:ellipsize="end"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:textColor="@drawable/artist_selector"
+        android:textSize="@dimen/text_size_18"
+        android:visibility="visible" />
+
+</merge>

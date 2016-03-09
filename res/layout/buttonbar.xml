@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/library_bg"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/TabType"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/libray_tab"
+            android:layout_width="82dp"
+         android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonbarbackground"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:drawableTop="@drawable/music_tab_library"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/tab_library"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@drawable/tab_indicator_text" />
+
+        <View
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="82dp"
+            android:layout_height="1px"
+            android:background="@color/white" />
+
+        <RadioButton
+            android:id="@+id/artist_tab"
+            android:layout_width="82dp"
+              android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonbarbackground"
+            android:button="@android:color/transparent"
+            android:drawableTop="@drawable/music_tab_artist"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/tab_artist"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@drawable/tab_indicator_text" />
+
+        <View
+                        android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="82dp"
+            android:layout_height="1px"
+            android:background="@color/white" />
+
+        <RadioButton
+            android:id="@+id/song_tab"
+            android:layout_width="82dp"
+             android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonbarbackground"
+            android:button="@android:color/transparent"
+            android:drawableTop="@drawable/music_tab_song"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/tab_song"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@drawable/tab_indicator_text" />
+
+        <View
+                        android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="82dp"
+            android:layout_height="1px"
+            android:background="@color/white" />
+
+        <RadioButton
+            android:id="@+id/album_tab"
+            android:layout_width="82dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonbarbackground"
+            android:button="@android:color/transparent"
+            android:drawableTop="@drawable/music_tab_album"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/tab_album"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@drawable/tab_indicator_text" />
+    </RadioGroup>
+
+
+</LinearLayout>
