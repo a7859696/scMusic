@@ -1815,7 +1815,7 @@ public class MediaPlaybackService extends Service {
     }
 
     /**
-     * Returns the current playback position in milliseconds
+     * Returns the current playback position in milliseconds(毫秒)
      */
     public long position() {
         if (mPlayer == null){

@@ -99,7 +99,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
         mTracksInTotal = (TextView) findViewById(R.id.track_in_total);
         mPrevious = (RepeatingImageButton) findViewById(R.id.prev);
         mPrevious.setOnClickListener(this);
-        mPrevious.setRepeatListener(mRewListener, 260);             //设置监听
+        mPrevious.setRepeatListener(mRewListener, 260);             //设置监听   
         mPause = (Button) findViewById(R.id.pause);
         mPause.setOnClickListener(this);
         mNext = (RepeatingImageButton) findViewById(R.id.next);
@@ -109,7 +109,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
     }
 
     private void scanBackward(int repcnt, long delta) {
-        if (mService == null) return;
+        if (mService == null) return;     
         try {
             if (repcnt == 0) {
                 mStartSeekPos = mService.position();
@@ -190,6 +190,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
             new RepeatingImageButton.RepeatListener() {
                 public void onRepeat(View v, long howlong, int repcnt) {
                     scanBackward(repcnt, howlong);
+                    Log.d("lixuan", "TrackPlayingView--- onRepeat--howlong："+howlong+"           repcnt："+repcnt);
                 }
             };
 
@@ -211,6 +212,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
         super.onVisibilityChanged(changedView, visibility);
         if (visibility == VISIBLE) {
             mPaused = false;
+            Log.d("lixuan", "TrackPlayingView--- onVisibilityChanged");
             updateTrackInfo();
             queueNextRefresh(1);
             setRepeatButtonImage();
@@ -267,7 +269,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-
+        Log.d("lixuan", "TrackPlayingView--- onAttachedToWindow()  ");
         IntentFilter f = new IntentFilter();
         f.addAction(MediaPlaybackService.PLAYSTATE_CHANGED);       
         f.addAction(MediaPlaybackService.META_CHANGED);
@@ -299,6 +301,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
             if (action.equals(MediaPlaybackService.META_CHANGED)) {
                 // redraw the artist/title info and
                 // set new max for progress bar
+                Log.d("lixuan", "TrackPlayingView--- onReceive");
                 updateTrackInfo();
                 setPauseButtonImage();
                 queueNextRefresh(REFRESH);
@@ -397,9 +400,9 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
         try {
             long pos = mPosOverride < 0 ? mService.position() : mPosOverride;       //pos是毫秒，获得  当前的播放时间
             if ((pos >= 0) && (mDuration > 0)) {
-                mCurrentTime.setText(MusicUtils.makeTimeString(mContext, pos / 1000));       //转化为秒传入进去
-                int progress = (int) (1000 * pos / mDuration);
-                mSeekbar.setProgress(progress);
+                mCurrentTime.setText(MusicUtils.makeTimeString(mContext, pos / 1000));       //转化为秒传入进去，设置  目前播放的时间
+                int progress = (int) (1000 * pos / mDuration);                            
+                mSeekbar.setProgress(progress);               //  进度条的位子
 
                 if (mService.isPlaying()) {
                     mCurrentTime.setVisibility(View.VISIBLE);
@@ -439,30 +442,33 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
         try {
             int total = mService.getQueue().length;
             int cur = mService.getQueuePosition()+1;
-            mTracksInTotal.setText(cur+"/"+total);
+            mTracksInTotal.setText(cur+"/"+total);                                 //mTracksInTotal ， ， 设置  播放的是第几首歌曲
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
 
+    /**
+     * 显示 一些TrackPlayingView   的一些信息。
+     */
     private void updateTrackInfo() {
-    	Log.d("lixuan", "TrackPlayingView--- updateTrackInfo");
+    	
         if (mService == null) {
             return;
         }
         try {
             String path = mService.getPath();
+            Log.d("lixuan", "TrackPlayingView--- updateTrackInfo  path不为空path==    "+path);
             if (path == null) {
                 return;
-            }
-
+            }         
             long songid = mService.getAudioId();
-            if (songid < 0 && path.toLowerCase().startsWith("http://")) {
+            if (songid < 0 && path.toLowerCase().startsWith("http://")) {                   
                 // Once we can get album art and meta data from MediaPlayer, we
                 // can show that info again when streaming.
                 mArtist.setVisibility(View.INVISIBLE);
-                mTitle.setText(path);
+                mTitle.setText(path);                                                   //显示   标题
                 mAlbumArtHandler.removeMessages(GET_ALBUM_ART);
                 mAlbumArtHandler.obtainMessage(GET_ALBUM_ART, new AlbumSongIdWrapper(-1, -1)).sendToTarget();
             } else {
@@ -471,20 +477,20 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
                 if (MediaStore.UNKNOWN_STRING.equals(artistName)) {
                     artistName = mContext.getResources().getString(R.string.unknown_artist_name);
                 }
-                mArtist.setText(artistName);
+                mArtist.setText(artistName);                                     //显示  艺术家的名字
                 String albumName = mService.getAlbumName();
                 long albumid = mService.getAlbumId();
                 if (MediaStore.UNKNOWN_STRING.equals(albumName)) {
                     albumName = mContext.getResources().getString(R.string.unknown_album_name);
                     albumid = -1;
                 }
-                mTitle.setText(mService.getTrackName());
+                mTitle.setText(mService.getTrackName());                    //显示   标题
                 mAlbumArtHandler.removeMessages(GET_ALBUM_ART);
-                mAlbumArtHandler.obtainMessage(GET_ALBUM_ART, new AlbumSongIdWrapper(albumid, songid)).sendToTarget();
+                mAlbumArtHandler.obtainMessage(GET_ALBUM_ART, new AlbumSongIdWrapper(albumid, songid)).sendToTarget();      //显示   图片
                 mArtistImage.setVisibility(View.VISIBLE);
             }
             mDuration = mService.duration();     //MediaPlayer取得音视频文件总时长
-            mTotalTime.setText(MusicUtils.makeTimeString(mContext, mDuration / 1000));
+            mTotalTime.setText(MusicUtils.makeTimeString(mContext, mDuration / 1000));                  //显示   歌曲时间总长
         } catch (RemoteException ex) {
 
         }
@@ -635,7 +641,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
                 mHandler.sendMessageDelayed(numsg, 300);
                 // Don't allow default artwork here, because we want to fall back to song-specific
                 // album art if we can't find anything for the album.
-                Bitmap bm = MusicUtils.getArtwork(mContext, songid, albumid, false);
+                Bitmap bm = MusicUtils.getArtwork(mContext, songid, albumid, false);                     //得到图片
                 if (bm == null) {
                     bm = MusicUtils.getArtwork(mContext, songid, -1);
                     albumid = -1;
@@ -643,7 +649,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
                 if (bm != null) {
                     numsg = mHandler.obtainMessage(ALBUM_ART_DECODED, bm);
                     mHandler.removeMessages(ALBUM_ART_DECODED);
-                    mHandler.sendMessage(numsg);
+                    mHandler.sendMessage(numsg);                                                                              //应用图片
                 }
                 mAlbumId = albumid;
             }
@@ -699,7 +705,7 @@ public class TrackPlayingView extends LinearLayout implements View.OnClickListen
         AlbumSongIdWrapper(long aid, long sid) {
             albumid = aid;
             songid = sid;
-        }
-    }
+		}
+	}
 
 }

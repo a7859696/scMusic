@@ -15,11 +15,11 @@ public class MainActivity extends Activity {
         if (activeTab ==  R.id.libray_tab){
             activeTab = R.id.song_tab;
         }
-        if (activeTab != R.id.artist_tab
-                && activeTab != R.id.libray_tab
-                && activeTab != R.id.song_tab
-                && activeTab != R.id.album_tab){
-            activeTab = R.id.song_tab;
+        if (activeTab != R.id.artist_tab                          //第二个
+                && activeTab != R.id.libray_tab               //第一个
+                && activeTab != R.id.song_tab                        //第三个
+                && activeTab != R.id.album_tab){             //第四个
+            activeTab = R.id.song_tab;                 
         }
         MusicUtils.activateTab(this, activeTab);             //启动Activtity
     }

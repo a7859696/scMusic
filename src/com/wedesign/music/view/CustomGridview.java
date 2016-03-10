@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 
@@ -46,14 +47,16 @@ public class CustomGridview extends GridView {
 
 
             if (v != null) {
-                int gridview_height = this.getHeight();
-                int interlayerHeight = mInterlayer.getIntrinsicHeight();
-                int blockGapHeight = v.getHeight();
+                int gridview_height = this.getHeight();                           //整个GirdView的高度
+                int interlayerHeight = mInterlayer.getIntrinsicHeight();   //获取图片的高度
+                int blockGapHeight = v.getHeight();                                   //子View的高度         
                 mMyDrawRect.left = 0;
-                mMyDrawRect.right = getWidth();
+                mMyDrawRect.right = getWidth();                       
                 int initPos = v.getTop()+blockGapHeight-interlayerHeight;
-
+//Log.d("lixuan", "各种高度----gridview_height:"+gridview_height    +"interlayerHeight:"+interlayerHeight+"       blockGapHeight:"+blockGapHeight+"    v.getTop():"+ v.getTop());
+//Log.d("lixuan","mMyDrawRect.top: "+mMyDrawRect.top+"        mMyDrawRect.right:"+mMyDrawRect.right);
                 for (int i = initPos; i <= gridview_height; i += blockGapHeight) {
+                	
                     mMyDrawRect.top = i;
                     mMyDrawRect.bottom = mMyDrawRect.top + interlayerHeight;
                     mInterlayer.setBounds(mMyDrawRect);
